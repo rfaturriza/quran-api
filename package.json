@@ -6,6 +6,10 @@
   "author": "Sutan Nasution. <sutan.gnst@gmail.com>",
   "license": "MIT",
   "private": false,
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
   "scripts": {
     "build": "npm install",
     "start": "node api/server.js",
@@ -13,6 +17,7 @@
     "crawl": "node crawler/script.js"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.1"
