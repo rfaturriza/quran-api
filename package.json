@@ -22,7 +22,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.1",
-    "mime": "^4.0.7"
+    "firebase-admin": "^13.4.0",
+    "mime": "^4.0.7",
+    "node-cron": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^8.17.0",
