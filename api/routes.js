@@ -1,10 +1,11 @@
 const { Router } = require('express');
 
-const { caching } = require('./middlewares');
+const { caching, verifyNotificationSecret } = require('./middlewares');
 const SurahHandler = require('./handlers/surah');
 const JuzHandler = require('./handlers/juz');
 const PageHandler = require('./handlers/page');
 const GenAiHandler = require('./handlers/gen_ai');
+const NotificationHandler = require('./handlers/notification');
 
 const router = Router();
 
@@ -51,6 +52,20 @@ router.get('/surah/:surah/:ayah', caching, SurahHandler.getAyahFromSurah);
 router.get('/juz/:juz', caching, JuzHandler.getJuz);
 router.get('/page/:page', caching, PageHandler.getPage);
 router.get('/ask-ustadz-ai', GenAiHandler.getResponse);
+
+// Trigger general notification (for Vercel cron)
+router.get(
+  '/notification/general',
+  verifyNotificationSecret,
+  NotificationHandler.general
+);
+
+// Trigger fasting notification (for Vercel cron)
+router.get(
+  '/notification/fasting',
+  verifyNotificationSecret,
+  NotificationHandler.fasting
+);
 
 // fallback router
 router.all('*', (req, res) =>
