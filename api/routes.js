@@ -53,14 +53,20 @@ router.get('/juz/:juz', caching, JuzHandler.getJuz);
 router.get('/page/:page', caching, PageHandler.getPage);
 router.get('/ask-ustadz-ai', GenAiHandler.getResponse);
 
-// Trigger general notification (for Vercel cron)
+// Trigger manual notification
+router.post(
+  '/notification/manual',
+  verifyNotificationSecret,
+  NotificationHandler.general
+);
+// Trigger general notification
 router.get(
   '/notification/general',
   verifyNotificationSecret,
   NotificationHandler.general
 );
 
-// Trigger fasting notification (for Vercel cron)
+// Trigger fasting notification
 router.get(
   '/notification/fasting',
   verifyNotificationSecret,

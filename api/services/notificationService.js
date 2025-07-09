@@ -177,6 +177,7 @@ async function scheduleFastingNotifications() {
 
 // Export functions for manual triggering
 module.exports = {
+  sendNotification,
   scheduleGeneralNotifications,
   scheduleFastingNotifications
 };
