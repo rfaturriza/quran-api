@@ -57,7 +57,7 @@ router.get('/ask-ustadz-ai', GenAiHandler.getResponse);
 router.post(
   '/notification/manual',
   verifyNotificationSecret,
-  NotificationHandler.general
+  NotificationHandler.manual
 );
 // Trigger general notification
 router.get(
